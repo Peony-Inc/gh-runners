@@ -66,7 +66,10 @@ if [ -z "$REMOVE_TOKEN" ]; then fatal "Failed to get a token"; fi
 #---------------------------------------
 echo
 echo "Uninstall the service ..."
-pushd ./runner
+
+runner_dir="${runner_name}"
+
+pushd ./${runner_dir}
 prefix=""
 if [ "${runner_plat}" == "linux" ]; then 
     prefix="sudo "

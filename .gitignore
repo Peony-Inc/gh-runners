@@ -27,3 +27,7 @@ TestResults
 TestLogs
 .DS_Store
 **/*.DotSettings.user
+runners
+
+# secrets
+.env

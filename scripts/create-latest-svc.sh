@@ -99,12 +99,14 @@ if [ -z "${RUNNER_CFG_PAT}" ]; then fatal "RUNNER_CFG_PAT must be set before cal
 which curl || fatal "curl required.  Please install in PATH with apt-get, brew, etc"
 which jq || fatal "jq required.  Please install in PATH with apt-get, brew, etc"
 
+runner_dir="${runner_name}"
+
 # bail early if there's already a runner there. also sudo early
-if [ -d ./runner ]; then
-    fatal "Runner already exists.  Use a different directory or delete ./runner"
+if [ -d ${runner_dir} ]; then
+    fatal "Runner already exists.  Use a different directory or delete ${runner_dir}"
 fi
 
-sudo -u ${svc_user} mkdir runner
+sudo -u ${svc_user} mkdir ${runner_dir}
 
 # TODO: validate not in a container
 # TODO: validate systemd or osx svc installer
@@ -158,14 +160,14 @@ ls -la *.tar.gz
 # extract to runner directory in this directory
 #---------------------------------------------------
 echo
-echo "Extracting ${runner_file} to ./runner"
+echo "Extracting ${runner_file} to ${runner_dir}"
 
-tar xzf "./${runner_file}" -C runner
+tar xzf "./${runner_file}" -C ${runner_dir}
 
 # export of pass
-sudo chown -R $svc_user ./runner
+sudo chown -R $svc_user ${runner_dir}
 
-pushd ./runner
+pushd ${runner_dir}
 
 #---------------------------------------
 # Unattend config
