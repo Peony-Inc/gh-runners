@@ -26,9 +26,9 @@ Create a .env file based on the example provided and provide a PAT with repo adm
  <sub>> :warning: It is important that you do not delete the `runners` directory created as it will be required to remove the runners from your system background process.</sub>
 
 #### Commands:
-1. `make runners group=<group-here>` - spawn 5 new GitHub self-hosted runners, assign runner to optional group
-2. `make create name=<name-here>` - spawn an individual runner with specified name
-2. `make create-org name=<name-here>` - spawn an individual runner with specified name in the defined group
+1. `make runners group=<group-here> labels=<label-here>` - spawn 5 new GitHub self-hosted runners, assign runner to optional group with the required provided labels
+2. `make create name=<name-here> labels=<label-here>` - spawn an individual runner with specified name with the required provided labels
+2. `make create-org name=<name-here> labels=<label-here>` - spawn an individual runner with specified name in the defined group with the required provided labels
 3. `make remove` - removes all runners running as a service
 4. `make delete` - force deletes a runner from the service
 5. `make clean` - removes `runners` directory
